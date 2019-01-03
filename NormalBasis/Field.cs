@@ -13,9 +13,9 @@ namespace NormalBasis
             var bitlenth = stringbitvector.Length;
             int[] number = new int[bitlenth];
 
-            for (var i = bitlenth-1; i>=0; i--)
+            for (var i = 0; i < stringbitvector.Length; i++)
             {
-                number[i] = Convert.ToByte(stringbitvector.Substring(stringbitvector.Length - (i + 1), 1), 2);
+                number[stringbitvector.Length - 1 - i] = Convert.ToByte(stringbitvector.Substring(stringbitvector.Length - (i + 1), 1), 2);
             }
 
             return number;
@@ -25,7 +25,7 @@ namespace NormalBasis
         {
             StringBuilder stringline = new StringBuilder();
 
-            for (int i = bitvector.Length - 1; i >= 0; i--)
+            for (int i = 0; i< bitvector.Length; i++)
             {
                 stringline.Append(Convert.ToString(bitvector[i], 2));
             }
@@ -44,7 +44,6 @@ namespace NormalBasis
             for (int i = 0; i < a.Length; i++)
             {
                 result[i] = (a[i] ^ b[i]);
-
             }
 
             return result;
@@ -53,8 +52,22 @@ namespace NormalBasis
         public static int[] ShiftBitsToRight(int[]a,int step)
         {
             int[] result = new int[a.Length];
+            int[] temp = new int[step];
 
+            for(int i=step-1;i>=0;i--)
+            {
+                temp[i] = a[a.Length - 1 - (step -1 - i)];
+            }
 
+            for(int i=a.Length-1;i>=step;i--)
+            {
+                result[i] = a[i - step];
+            }
+
+            for(int i=0;i<step;i++)
+            {
+                result[i] = temp[i];
+            }
             return result;
         }
     }

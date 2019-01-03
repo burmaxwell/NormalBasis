@@ -33,6 +33,23 @@ namespace NormalBasis
                 Assert.AreEqual(expectedResult, actualResult);
             }
 
+            [Test]
+            [TestCase("100111010010110",
+                3,
+                "110100111010010")]
+            [TestCase("111000010101110000111011011110",
+                10,
+                "101101111011100001010111000011")]
+            [TestCase("01111101001111101100100100000000101111101001011101011010001101100111000",
+                23,
+                "01011010001101100111000011111010011111011001001000000001011111010010111")]
+            public void ShiftBitsToRightTest(string pol1,int step1, string expectedResult)
+            {
+                int[] a = new int[1];
+                a = Field.String_To_Byte(pol1);
+                var actualResult = Field.Byte_To_String(Field.ShiftBitsToRight(a, step1));
+                Assert.AreEqual(expectedResult, actualResult);
+            }
 
 
 
