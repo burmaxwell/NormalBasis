@@ -17,7 +17,7 @@ namespace NormalBasis
             int[] p2 = new int[1];
             p1 = Field.String_To_Byte(a);
             p2 = Field.String_To_Byte(b);
-            Console.WriteLine(Field.Byte_To_String(Field.ShiftBitsToRight(p1,2)));
+            Console.WriteLine(Field.Byte_To_String(Field.ShiftBitToRight(p1)));
             Console.ReadKey();
         }
     }

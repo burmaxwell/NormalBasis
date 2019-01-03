@@ -70,5 +70,16 @@ namespace NormalBasis
             }
             return result;
         }
+
+        public static int[] ShiftBitToRight(int[] a)// Square
+        {
+            int[] result = new int[a.Length];
+            for (int i = 0; i < a.Length-1; i++)
+            {
+                result[i + 1] = a[i];
+            }
+            result[0] = a[a.Length-1];
+            return result;
+        }
     }
 }
