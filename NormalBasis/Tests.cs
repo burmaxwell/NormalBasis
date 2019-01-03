@@ -69,11 +69,19 @@ namespace NormalBasis
                 Assert.AreEqual(expectedResult, actualResult);
             }
 
+            [Test]
+            [TestCase("111",1)]
+            [TestCase("011",0)]
+            [TestCase("101",0)]
+            [TestCase("001",1)]
 
-
-
-
-
+            public void TraceTest(string pol1, int expectedResult)
+            {
+                int[] a = new int[1];
+                a = Field.String_To_Byte(pol1);
+                var actualResult =Field.Trace(a);
+                Assert.AreEqual(expectedResult, actualResult);
+            }
 
         }
     }

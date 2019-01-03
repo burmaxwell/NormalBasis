@@ -81,5 +81,14 @@ namespace NormalBasis
             result[0] = a[a.Length-1];
             return result;
         }
+
+        public static int Trace(int[]a)
+        {
+            int trace =0;
+            for (int i = 0; i < a.Length; i++)
+                trace = trace ^ a[i];
+            return trace;
+        }
+
     }
 }
