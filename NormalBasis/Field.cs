@@ -90,5 +90,16 @@ namespace NormalBasis
             return trace;
         }
 
+        public static int[] ShiftBitToLeft(int[] a)
+        {
+            int[] result = new int[a.Length];
+            for (int i = 1; i < a.Length ; i++)
+            {
+                result[i - 1] = a[i];
+            }
+            result[a.Length-1] = a[0];
+            return result;
+        }
+
     }
 }
