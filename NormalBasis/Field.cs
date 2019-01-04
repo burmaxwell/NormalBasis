@@ -6,6 +6,43 @@ using System.Threading.Tasks;
 
 namespace NormalBasis
 {
+    /*class Matrix
+    {
+        public static int[,] LambdaMatrix(int m)
+        {
+            int p = 2 * m + 1;
+            int[,] Matrix = new int[m, m];
+            int[] pow_two_mod_p = new int[m];
+            pow_two_mod_p[0] = 1;
+
+            for (int i = 1; i < m; i++)
+                pow_two_mod_p[i] = (pow_two_mod_p[i - 1] * 2) % p;
+
+            int pow_i, pow_j;
+
+            for (int i = 0; i < m; i++)
+            {
+                pow_i = pow_two_mod_p[i];
+
+                for (int j = 0; j < m; j++)
+                {
+                    pow_j = pow_two_mod_p[j];
+
+                    if (((pow_i + pow_j) % p) == 1 || (((pow_i - pow_j) + p) % p) == 1 || ((pow_j - pow_i + p) % p) == 1 || (((-pow_i - pow_j) + p) % p) == 1)
+
+                    {
+                        Matrix[i, j] = 1;
+                        continue;
+                    }
+
+                    Matrix[i, j] = 0;
+                }
+            }
+
+            return Matrix;
+        }
+    }
+    */
     class Field
     {
         public static int[] String_To_Byte(string stringbitvector)
@@ -134,12 +171,38 @@ namespace NormalBasis
 
             return Matrix;
         }
+        
+        public static int[] Mul(int[] a, int[] b)
+        {
+            int[] result = new int[a.Length];
+            int[,] Matrix =LambdaMatrix(a.Length);
 
+            for (int n = 0; n < a.Length; n++)
+            {          
+                int[] temp = new int[a.Length];
 
+                for (int j = 0; j < a.Length; j++)
+                {
+                    for (int i = 0; i < a.Length; i++)
+                    {
+                        temp[j] = (temp[j]) ^ (a[i] & Matrix[i,j]);
+                    }
+                }
 
+                int matrix_element = 0;
 
+                for (int i = 0; i < a.Length; i++)
+                {
+                    matrix_element = (matrix_element) ^ (temp[i] & b[i]);
+                }
 
+                result[n] = matrix_element;
+                a = ShiftBitToLeft(a);
+                b = ShiftBitToLeft(b);
+            }
 
+            return result;
+        }
 
 
 
