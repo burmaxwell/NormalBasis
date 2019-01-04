@@ -131,7 +131,6 @@ namespace NormalBasis
                     Matrix[i,j] = 0;
                 }
             }
-
             return Matrix;
         }
         
@@ -147,17 +146,14 @@ namespace NormalBasis
                 for (int j = 0; j < a.Length; j++)
                 {
                     for (int i = 0; i < a.Length; i++)
-                    {
-                        temp[j] = (temp[j]) ^ (a[i] & Matrix[i,j]);
-                    }
+                        temp[j] = (temp[j]) ^ (a[i] & Matrix[i,j]);                    
                 }
 
                 int matrix_element = 0;
 
                 for (int i = 0; i < a.Length; i++)
-                {
                     matrix_element = (matrix_element) ^ (temp[i] & b[i]);
-                }
+
 
                 result[n] = matrix_element;
                 a = ShiftBitToLeft(a);
@@ -167,7 +163,22 @@ namespace NormalBasis
             return result;
         }
 
+        public static int[] BigPower(int[]a,int[]n)
+        {
+            int[] result = new int[a.Length];
+            string one = "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111";
+            result = String_To_Byte(one);
 
+            for (var i = a.Length - 1; i >= 0; i--)
+            {
+                if (n[i] == 1)
+                {
+                    result = Mul(result, a);
+                }
+                a = ShiftBitToRight(a);
+            }
+            return result;
+        }
 
 
 
