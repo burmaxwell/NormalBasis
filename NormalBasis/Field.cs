@@ -49,28 +49,6 @@ namespace NormalBasis
             return result;
         }
 
-        public static int[] ShiftBitsToRight(int[]a,int step)
-        {
-            int[] result = new int[a.Length];
-            int[] temp = new int[step];
-
-            for(int i=step-1;i>=0;i--)
-            {
-                temp[i] = a[a.Length - 1 - (step -1 - i)];
-            }
-
-            for(int i=a.Length-1;i>=step;i--)
-            {
-                result[i] = a[i - step];
-            }
-
-            for(int i=0;i<step;i++)
-            {
-                result[i] = temp[i];
-            }
-            return result;
-        }
-
         public static int[] ShiftBitToRight(int[] a)// Square
         {
             int[] result = new int[a.Length];
@@ -121,7 +99,7 @@ namespace NormalBasis
                 {
                     pow_j = pow_two_mod_p[j];
 
-                    if (((pow_i + pow_j) % p) == 1 || (((pow_i - pow_j) + p) % p) == 1 || ((pow_j - pow_i + p) % p) == 1 || (((-pow_i - pow_j) + p) % p) == 1)
+                    if ( (((pow_i - pow_j) + p) % p) == 1 || ((pow_i + pow_j) % p) == 1 || (((-pow_i - pow_j) + p) % p) == 1 || ((pow_j - pow_i + p) % p) == 1)
 
                     {
                         Matrix[i,j] = 1;
