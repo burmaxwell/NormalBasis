@@ -20,9 +20,9 @@ namespace NormalBasis
             p1 = Field.String_To_Byte(a);
             p2 = Field.String_To_Byte(b);
             p3 = Field.String_To_Byte(c);
-            Console.WriteLine(Field.Byte_To_String(Field.ShiftBitToLeft(p1)));
-            Console.WriteLine((Field.Trace(p2)));
-            Console.WriteLine((Field.Trace(p3)));
+            //Console.WriteLine(Field.Byte_To_String(Field.ShiftBitToLeft(p1)));
+            Console.WriteLine((Field.LambdaMatrix(6)));
+            //Console.WriteLine((Field.Trace(p3)));
 
             Console.ReadKey();
         }
