@@ -168,7 +168,7 @@ namespace NormalBasis
             }
             return Beta;
         }
-
+        //
         public static int[] Inverse(int[] a)
         {  
             
