@@ -1,0 +1,9 @@
+language: csharp
+script:
+  - xbuild /p:Configuration=Debug NormalBasis.sln
+before_install:
+  - sudo apt-get install nunit-console
+before_script:
+  - nuget restore NormalBasis.sln
+after_script:
+  - nunit-console NormalBasis/bin/Debug/NormalBasis.exe
