@@ -158,15 +158,41 @@ namespace NormalBasis
             return result;
         }
 
+        public static int[] beta2k(int[] a, int k)
+        {
+            int[] Beta = new int[a.Length];
+            Beta = a;
+            for (int i = 1; i <= k; i++)
+            {
+                Beta=ShiftBitToRight(Beta);
+            }
+            return Beta;
+        }
 
+        public static int[] Inverse(int[] a)
+        {  
+            
+            string a_len_in_binary = "10110010";//m=m-1=179-1=178 in binary
+            int[] m_in_binary = new int[a_len_in_binary.Length];
+            m_in_binary = String_To_Byte(a_len_in_binary);
 
+            int k = 1;
+            int[] beta = new int[a.Length];
+            beta = a;
 
-
-
-
-
-
-
+            for (int i = 1; i < a_len_in_binary.Length; i++)
+            {
+                beta = Mul(beta2k(beta, k), beta);
+                k = 2*k;
+                if (m_in_binary[i] == 1)
+                {
+                    beta = Mul(ShiftBitToRight(beta),a);
+                    k = k + 1;
+                }
+            }
+            beta = ShiftBitToRight(beta);
+            return beta;
+        }
 
     }
 }
